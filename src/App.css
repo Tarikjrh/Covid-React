@@ -1,0 +1,33 @@
+.App {
+  text-align: left;
+}
+:root {
+  font-size: 16px;
+  --purple: #9f68f9;
+  --bgGrey: #242424;
+  --lightGrey: rgba(46, 46, 46, 1);
+  --bgLight: #f8f8f8;
+  --textLight: black;
+  --textDark: white;
+  --MapGreyBg: rgba(36, 34, 34, 0.8);
+}
+html,
+body {
+  font-family: "Righteous", cursive;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 500ms ease-in-out, color 1000ms ease-in-out;
+}
+.light {
+  --bg: var(--bgLight);
+  --card-bg: var(--purple);
+  --text: var(--textLight);
+  --label: var(--textDark);
+}
+.dark {
+  --bg: var(--bgGrey);
+  --card-bg: var(--lightGrey);
+  --text: var(--textDark);
+  --label: var(--purple);
+  --mapBg: var(--MapGreyBg);
+}

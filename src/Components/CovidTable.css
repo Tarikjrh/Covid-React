@@ -1,0 +1,40 @@
+.covidTable {
+  padding: 0 2em;
+  overflow-y: auto;
+  height: 14rem;
+  /* height: 45vh; */
+}
+
+.rank-header {
+  font-size: 2em;
+}
+
+.sort-feature {
+  line-height: 0.5em;
+  color: var(--label);
+  font-size: 0.6em;
+}
+
+.table thead th {
+  border-top: 0px;
+}
+table th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--card-bg);
+  transition: background 700ms ease-in-out;
+}
+
+.custom-select {
+  /* background-color: turquoise; */
+  border: transparent;
+  color: black;
+}
+/* Small screens */
+@media only screen and (max-width: 600px) {
+  .covidTable {
+    padding: 0;
+  }
+}

@@ -1,0 +1,15 @@
+.dark-card {
+  background-color: var(--card-bg);
+  padding: 0.8em 1.5em;
+  border-radius: 15px;
+  /* margin-top: 2em; */
+  /* width: 100%; */
+  transition: background 700ms ease-in-out, color 1000ms ease-in-out;
+}
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+  .dark-card {
+    margin-top: 1em;
+  }
+}
