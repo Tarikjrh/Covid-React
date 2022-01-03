@@ -13,6 +13,10 @@ const Navbar = () => {
         if (theme) {
             body.classList.add(theme);
         }
+        else {
+            body.classList.add("dark");
+            setTheme("dark")
+        }
 
     }, [])
     // Button Event Handlers
