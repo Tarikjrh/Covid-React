@@ -12,24 +12,26 @@ const CovidTable = (props) => {
 	const [covidStats, setCovidStats] = useState(props.data.sort(function (a, b) {
 		return parseInt(b[sortFeature]) - parseInt((a[sortFeature]));
 	}));
-	var rank = 1;
 
+
+	var rank = 1;
 	function selectHandler(e) {
+		// sort table based on field 
 
 		setCovidStats(
 			covidStats.sort(function (a, b) {
 				return parseInt(b[sortFeature]) - parseInt((a[sortFeature]));
 			})
 		);
+
 		setSortFeature(e.target.value);
 
 	}
 
 	return (
-		<Card classes=" ">
-			{/* <div className="global-rank test"> */}
+		<Card >
 			<div className="row  px-3">
-				<h1 className="rank-header ">Global rank
+				<h1 className="rank-header ">Global Rank
 					<span >
 						<h2 className="sort-feature">
 							By {sortFeature}
@@ -67,7 +69,6 @@ const CovidTable = (props) => {
 						})}</tbody>
 				</table>
 			</div>
-			{/* </div> */}
 		</Card>
 
 

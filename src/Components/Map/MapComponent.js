@@ -47,8 +47,17 @@ const MapComponent = (props) => {
 		});
 	}
 	function zoomToFeature(e) {
+
 		mapRef.fitBounds(e.target.getBounds());
 		// mapRef.flyTo([35.82110070165024, 33.2774264592763], 5)
+
+		// get info
+		setCovidInfo({
+			name: e.target.feature.properties.name,
+			cases: e.target.feature.properties.covidData.cases,
+			deaths: e.target.feature.properties.covidData.deaths
+		});
+
 
 	}
 	function highlightFeature(e) {

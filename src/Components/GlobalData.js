@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import './GlobalData.css'
 import world from '../world.png';
 import Card from "./UI/Card";
-
-var content = <h1>hello</h1>;
 const GlobalData = () => {
 	const [globalData, setGlobalData] = useState([]);
-
+	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
 		fetchCovidInfo();
 	}, []);
@@ -26,52 +24,45 @@ const GlobalData = () => {
 
 			const data = await response.json();
 			setGlobalData(data);
-		} catch (error) { }
+			setIsLoading(false)
+		}
+		catch (error) {
+			console.log(error)
+			setGlobalData(null)
+		}
 	}
-	if (globalData.length > 0) {
-		content = (
-			<div>
-				<h1>{globalData.total_cases}</h1>
-				<h1>{globalData.new_cases}</h1>
-				<h1>{globalData.total_recovered}</h1>
-			</div>
-		);
-	}
+
+
 	return (
 		<Card classes="global-data ">
-			{/* <div className="global-data "> */}
 			<h1>World Stats</h1>
 			<div className="row">
 				<div className="col-5">
 					{globalData && (
-						<div className="">
-							<h1 className="value ">{globalData.total_cases}
+						<div className="globe-info">
+							<h1 className="value ">{isLoading ? <p>Loading...</p> : globalData.total_cases}
 								<span>
-									<h2 className="label">cases</h2>
+									<h2 className="label">Total Cases</h2>
 								</span>
 							</h1>
-							<h1 className="value">{globalData.new_cases} <span>
-								<h2 className="label">cases</h2>
+							<h1 className="value">{isLoading ? <p>Loading...</p> : globalData.new_cases} <span>
+								<h2 className="label">New Cases</h2>
 							</span>
 							</h1>
-							<h1 className="value">{globalData.total_recovered} <span>
-								<h2 className="label">cases</h2>
+							<h1 className="value">{isLoading ? <p>Loading...</p> : globalData.total_recovered} <span>
+								<h2 className="label">Total Recovered</h2>
 							</span>
 							</h1>
 						</div>
 					)}
+					{!globalData && <h4>Error Getting data</h4>}
 				</div>
 				<div className="col-7 pr-0">
 					<img src={world} alt="world image" className=" img-fluid" />
 				</div>
 			</div>
 
-			{/* </div> */}
 		</Card>
 	);
 };
 export default GlobalData;
-{/* {content} */ }
-{/* <h1>{globalData.total_cases}</h1>
-			<h1>{globalData.new_cases}</h1>
-			<h1>{globalData.total_recovered}</h1> */}

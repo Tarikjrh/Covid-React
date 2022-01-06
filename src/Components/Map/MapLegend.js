@@ -16,7 +16,7 @@ const COLOR_7 = "#7400b8";
 const MapLegend = () => {
     return (
         <div className="legend">
-            <div style={{ "--color": COLOR_7 }}>{parseInt(40000000).toLocaleString()} Cases</div>
+            <div style={{ "--color": COLOR_7 }}>{parseInt(40000000).toLocaleString()}+</div>
             <div style={{ "--color": COLOR_6 }}>{parseInt(2000000).toLocaleString()}+</div>
             <div style={{ "--color": COLOR_5 }}>{parseInt(1000000).toLocaleString()}+</div>
             <div style={{ "--color": COLOR_4 }}>{parseInt(500000).toLocaleString()}+</div>

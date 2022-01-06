@@ -11,9 +11,8 @@ const CountrySelector = (props) => {
 	}
 
 	return (
-		<div>
-			<Select options={countryList} className="country-selector" onChange={SubmitHandler} />
-		</div>
+
+		<Select options={countryList} className="country-selector" onChange={SubmitHandler} />
 	);
 };
 

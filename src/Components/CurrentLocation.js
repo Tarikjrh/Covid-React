@@ -2,15 +2,10 @@ import { useState, useEffect } from "react";
 import SelectedCountry from "./SelectedCountry";
 import './CurrentLocation.css'
 import Card from "./UI/Card";
-let url = "https://api.geoapify.com/v1/ipinfo?apiKey=ceeeae247e48442faca2e96b7fb8d483";
-// fetch("https://api.geoapify.com/v1/ipinfo?apiKey=ceeeae247e48442faca2e96b7fb8d483")
-// 	.then((resp) => resp.json())
-// 	.then((userLocationData) => {
-// 		console.log(userLocationData);
-//     });
+
 var content = "";
 const CurrentLocation = (props) => {
-	const [ipInfo, setIpInfo] = useState([]);
+	// const [ipInfo, setIpInfo] = useState([]);
 	const [locationData, setLocationData] = useState({ name: "", cases: 0, deaths: 0 });
 	const [found, setFound] = useState(false);
 
@@ -26,13 +21,10 @@ const CurrentLocation = (props) => {
 	}, []);
 
 	function search(allCountries, countryWanted) {
-		// console.log(allCountries, countryWanted);
 		allCountries.forEach((country) => {
 			if (country.name.toLowerCase() === countryWanted.toLowerCase().trim()) {
-				// console.log("foundCountry", country);
 				setFound(true);
 				setLocationData(country);
-				// console.log("search=>", locationData, ipInfo);
 			}
 		});
 
@@ -45,8 +37,7 @@ const CurrentLocation = (props) => {
 					resp.json()
 				)
 				.then((userLocationData) => {
-					// console.log(userLocationData.country.name)
-					setIpInfo(userLocationData.country.name);
+					// setIpInfo(userLocationData.country.name);
 					search(props.data, userLocationData.country.name);
 				})
 
@@ -56,12 +47,10 @@ const CurrentLocation = (props) => {
 
 
 		} catch (error) {
-			// setError(error.message)
 		}
 	}
 	if (found) {
-		// console.log(locationData)
-		content = <div>{found && <SelectedCountry selected={locationData} />}</div>
+		content = found && <SelectedCountry selected={locationData} />
 	}
 	else {
 		content = <h1>loading...</h1>
@@ -71,12 +60,10 @@ const CurrentLocation = (props) => {
 
 	return (
 		<Card classes="col-12 mt-md-auto">
-			{/* <div className="col-12 current-location  mt-auto" > */}
-			{/* <div className="container"> */}
+
 			< h2 className="search-title" > Current Location</ h2>
 			{content}
-			{/* </div> */}
-			{/* </div > */}
+
 		</Card>
 	);
 };

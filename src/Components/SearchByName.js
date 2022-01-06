@@ -12,22 +12,13 @@ const SearchByName = (props) => {
 	function search(allCountries, countryWanted) {
 		allCountries.forEach((country) => {
 			if (country.name.toLowerCase() === countryWanted.toLowerCase().trim()) {
-				// console.log("foundCountry", country);
 				setFound(true);
 				setSelectedCountry(country);
-				// console.log("search=>", selectedCountry, found);
 			}
 		});
-
-		if (!found) {
-			content = <h1>Not Found</h1>;
-			// console.log("notFound");
-		}
-		// console.log("search=>", selectedCountry, found);
 	}
 
 	function SubmitHandler(e) {
-
 		setFound(false);
 		setSelectedCountry(false);
 		var countryWanted = e.value;
@@ -36,24 +27,20 @@ const SearchByName = (props) => {
 	}
 
 	if (found) {
-		content = <div>{found && <SelectedCountry selected={selectedCountry} />}</div>;
+		content = found && <SelectedCountry selected={selectedCountry} />
+
 	}
 	else if (selectedCountry.length === 0) {
-
 		content = <h1 className="not-found">No Country Selected</h1>;
 	}
 	else if (selectedCountry === false) {
-
 		content = <h1 className="not-found">Country data not available</h1>;
 	}
 
-	console.log(selectedCountry, found)
-	// console.log(selectedCountry, found);
 	return (
 		<Card classes="col-12  mb-md-auto ">
-
 			<h2 className="search-title">Search By Name</h2>
-			<form action="">
+			<form>
 				<CountrySelector onChange={SubmitHandler} />
 			</form>
 			{content}
