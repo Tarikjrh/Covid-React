@@ -1,6 +1,8 @@
 # Covid-React
 
 Covid Dashboard made with React.
+<br/>
+Live version at https://covid21.web.app/
 
 # Interactive Map
 
